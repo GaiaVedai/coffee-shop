@@ -9,7 +9,29 @@ var coffeeShop = {
   },
 
   makeDrink: function (drinkType) {
-    // TODO: Finish this method
+    checkDrink(drinkType);
+  }
+}
+
+checkDrink = function (drinkType) {
+  for (var key in coffeeShop.drinkRequirements) {
+    if (drinkType === key) {
+      checkBeans(drinkType, coffeeShop.drinkRequirements[key])
+      return;
+    }
+  }
+  console.log(`Sorry, we don't make ${drinkType}`); 
+}
+
+checkBeans = function (drinkType, numberOfBeans) {
+  if (coffeeShop.beans >= numberOfBeans) {
+    coffeeShop.beans -= numberOfBeans
+    console.log(coffeeShop.beans)
+    console.log("here is your " + drinkType);
+
+  }
+  else {
+    console.log("sorry, we are out of beans!");
   }
 }
 
